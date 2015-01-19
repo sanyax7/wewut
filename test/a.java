@@ -24,6 +24,14 @@ public class a {
       return new CustomerBuilder(name, rentals);
     }
 
+    public CustomerBuilder w(Rental ... instances) {
+      Rental[] rentals = new Rental[instances.length];
+      for (int i = 0; i < instances.length; i++) {
+        rentals[i] = instances[i];
+      }
+      return new CustomerBuilder(name, rentals);
+    }
+
     public CustomerBuilder w(String name) {
       return new CustomerBuilder(name, rentals);
     }
