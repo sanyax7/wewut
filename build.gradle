@@ -1,0 +1,18 @@
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.1'
+}
+
+apply plugin: 'java'
+
+dependencies {
+  compile fileTree(dir: 'lib', include: '*.jar')
+}
+
+sourceSets {
+  main.java {
+    srcDir 'src'
+  }
+  test.java {
+    srcDir 'test'
+  }
+}
