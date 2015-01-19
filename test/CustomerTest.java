@@ -32,7 +32,6 @@ public class CustomerTest {
       "\tnull\n" +
       "Amount owed is 0.0\n" +
       "You earned 0 frequent renter points",
-      // Overload w to accept Rental class
       a.customer.w(
         mock(Rental.class)
       ).build().statement()
