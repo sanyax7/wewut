@@ -1,5 +1,6 @@
-public class Movie {
+package wewut;
 
+public class Movie {
   public enum Type {
     REGULAR, NEW_RELEASE, CHILDREN, UNKNOWN;
   }
@@ -7,8 +8,7 @@ public class Movie {
   private String title;
   Price price;
 
-  public Movie(
-    String title, Movie.Type priceCode) {
+  public Movie(String title, Movie.Type priceCode) {
     this.title = title;
     setPriceCode(priceCode);
   }
@@ -17,8 +17,7 @@ public class Movie {
     return title;
   }
 
-  private void setPriceCode(
-    Movie.Type priceCode) {
+  private void setPriceCode(Movie.Type priceCode) {
     switch (priceCode) {
     case CHILDREN:
       price = new ChildrensPrice();
@@ -30,8 +29,7 @@ public class Movie {
       price = new RegularPrice();
       break;
     default:
-      throw new IllegalArgumentException(
-        "invalid price code");
+      throw new IllegalArgumentException("invalid price code");
     }
   }
 

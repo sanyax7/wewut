@@ -1,7 +1,9 @@
-public class Rental {
+package wewut;
 
+public class Rental {
   Movie movie;
   private int daysRented;
+  private boolean started;
 
   public Rental(Movie movie, int daysRented) {
     this.movie = movie;
@@ -25,7 +27,17 @@ public class Rental {
   }
 
   public String getLineItem() {
-    return
-      movie.getTitle() + " " + getCharge();
+    return movie.getTitle() + " " + getCharge();
+  }
+
+  public boolean isStarted() {
+    return started;
+  }
+
+  public void start(Store store) {
+    if (store.getAvailability(movie) > 0) {
+      store.remove(movie);
+      this.started = true;
+    }
   }
 }

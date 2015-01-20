@@ -1,7 +1,15 @@
+package wewut.test;
+
+import java.util.Map;
+import java.util.HashMap;
+
+import wewut.*;
+
 public class a {
   public static CustomerBuilder customer = new CustomerBuilder();
   public static RentalBuilder rental = new RentalBuilder();
   public static MovieBuilder movie = new MovieBuilder();
+  public static StoreBuilder store = new StoreBuilder();
 
   public static class CustomerBuilder {
     Rental[] rentals;
@@ -62,6 +70,10 @@ public class a {
       return new RentalBuilder(movie.build(), days);
     }
 
+    public RentalBuilder w(Movie movie) {
+      return new RentalBuilder(movie, days);
+    }
+
     public Rental build() {
       return new Rental(movie, days);
     }
@@ -90,6 +102,28 @@ public class a {
     
     public Movie build() {
       return new Movie(name, type);
+    }
+  }
+
+  public static class StoreBuilder {
+    final Map<Movie, Integer> movies;
+
+    StoreBuilder() {
+      this(new HashMap<Movie, Integer>());
+    }
+
+    StoreBuilder(Map<Movie, Integer> movies) {
+      this.movies = movies;
+    }
+
+    public StoreBuilder w(Movie movie) {
+      Map movies = new HashMap<Movie, Integer>();
+      movies.put(movie, 1);
+      return new StoreBuilder(movies);
+    }
+
+    public Store build() {
+      return new Store(movies);
     }
   }
 }

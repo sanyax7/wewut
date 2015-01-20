@@ -1,13 +1,13 @@
+package wewut.test.solitary;
+
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
-public class MovieTest {
-  @Test
-  (expected=IllegalArgumentException.class)
-  public void invalidTitle() {
-    a.movie.w(Movie.Type.UNKNOWN).build();
-  }
+import wewut.test.a;
 
+import wewut.Movie;
+
+public class MovieTest {
   @Test
   public void getChargeForChildrens() {
     assertEquals(
@@ -118,6 +118,12 @@ public class MovieTest {
       1,
       a.movie.w(Movie.Type.REGULAR).build().getPoints(2)
     );
+  }
+
+  @Test
+  (expected=IllegalArgumentException.class)
+  public void invalidTitle() {
+    a.movie.w(Movie.Type.UNKNOWN).build();
   }
 
 }

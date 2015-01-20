@@ -1,3 +1,5 @@
+package wewut;
+
 public class ChildrensPrice extends Price {
   @Override
   double getCharge(int daysRented) {
