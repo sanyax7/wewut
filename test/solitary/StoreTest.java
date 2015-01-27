@@ -11,7 +11,6 @@ import wewut.test.a;
 import wewut.Store;
 import wewut.Movie;
 
-// WIP
 public class StoreTest {
   @Test
   public void storeWithNoAvailability() {
