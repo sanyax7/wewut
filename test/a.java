@@ -122,6 +122,12 @@ public class a {
       return new StoreBuilder(movies);
     }
 
+    public StoreBuilder w(Movie movie1, Movie movie2) {
+      Map movies = new HashMap<Movie, Integer>();
+      movies.put(movie1, 2); // hack
+      return new StoreBuilder(movies);
+    }
+
     public Store build() {
       return new Store(movies);
     }
