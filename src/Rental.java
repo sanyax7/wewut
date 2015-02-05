@@ -14,6 +14,11 @@ public class Rental {
     return movie;
   }
 
+  public Movie getMovie(Boolean returnCopy) {
+    if (returnCopy) return movie;
+    return movie;
+  }
+
   public int getDaysRented() {
     return daysRented;
   }

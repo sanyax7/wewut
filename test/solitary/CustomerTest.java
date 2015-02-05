@@ -5,10 +5,14 @@ import static org.junit.Assert.assertEquals;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.anyString;
+import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.anyBoolean;
 
 import wewut.test.a;
 
 import wewut.Rental;
+import wewut.Movie;
 
 public class CustomerTest {
   @Test
@@ -174,5 +178,54 @@ public class CustomerTest {
         rental
       ).build().getTotalPoints()
     );
+  }
+
+  @Test
+  public void recentRentalsWith2Rentals() {
+    Movie movie = mock(Movie.class);
+    Rental rental = mock(Rental.class);
+    when(rental.getMovie(anyBoolean())).thenReturn(movie);
+
+    assertEquals(
+      "Recent rentals:\n" +
+      "null\n" +
+      "null",
+      a.customer.w(rental, rental).build()
+        .recentRentals()
+    );
+  }
+
+  @Test
+  public void recentRentalsWith3Rentals() {
+    Movie movie = mock(Movie.class);
+    Rental rental = mock(Rental.class);
+    when(rental.getMovie(anyBoolean())).thenReturn(movie);
+
+    assertEquals(
+      "Recent rentals:\n" +
+      "null\n" +
+      "null\n" +
+      "null",
+      a.customer.w(rental, rental, rental).build()
+        .recentRentals()
+    );
+
+  }
+
+  @Test
+  public void recentRentalsWith4Rentals() {
+    Movie movie = mock(Movie.class);
+    Rental rental = mock(Rental.class);
+    when(rental.getMovie(anyBoolean())).thenReturn(movie);
+
+    assertEquals(
+      "Recent rentals:\n" +
+      "null\n" +
+      "null\n" +
+      "null",
+      a.customer.w(rental, rental, rental, rental).build()
+        .recentRentals()
+    );
+
   }
 }

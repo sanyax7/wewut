@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
-
   private String name;
   private List<Rental> rentals = new ArrayList<Rental>();
 
@@ -22,6 +21,15 @@ public class Customer {
 
   public void addRental(Rental rental) {
     rentals.add(rental);
+  }
+
+  public String recentRentals() {
+    String result = "Recent rentals:";
+    for (int i = 0; i < rentals.size() && i < 3; i++) {
+      result += "\n" +
+        rentals.get(i).getMovie(true).getTitle("%s starring %s %s", 2);
+    }
+    return result;
   }
 
   public String statement() {

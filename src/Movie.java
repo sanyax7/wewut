@@ -17,6 +17,10 @@ public class Movie {
     return title;
   }
 
+  public String getTitle(String format, int actorsCount) {
+    return title;
+  }
+
   private void setPriceCode(Movie.Type priceCode) {
     switch (priceCode) {
     case CHILDREN:
