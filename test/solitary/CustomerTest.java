@@ -5,14 +5,10 @@ import static org.junit.Assert.assertEquals;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.anyString;
-import static org.mockito.Mockito.anyInt;
-import static org.mockito.Mockito.anyBoolean;
 
 import wewut.test.a;
 
 import wewut.Rental;
-import wewut.Movie;
 
 public class CustomerTest {
   @Test
@@ -181,51 +177,71 @@ public class CustomerTest {
   }
 
   @Test
-  public void recentRentalsWith2Rentals() {
-    Movie movie = mock(Movie.class);
-    Rental rental = mock(Rental.class);
-    when(rental.getMovie(anyBoolean())).thenReturn(movie);
-
+  public void recentRentals0Rentals() {
     assertEquals(
-      "Recent rentals:\n" +
-      "null\n" +
-      "null",
-      a.customer.w(rental, rental).build()
+      "Recent rentals:",
+      a.customer.build()
         .recentRentals()
     );
   }
 
   @Test
-  public void recentRentalsWith3Rentals() {
-    Movie movie = mock(Movie.class);
-    Rental rental = mock(Rental.class);
-    when(rental.getMovie(anyBoolean())).thenReturn(movie);
-
+  public void recentRentals1Rental() {
     assertEquals(
       "Recent rentals:\n" +
-      "null\n" +
-      "null\n" +
       "null",
-      a.customer.w(rental, rental, rental).build()
+      a.customer.w(mock(Rental.class)).build()
         .recentRentals()
     );
-
   }
 
   @Test
-  public void recentRentalsWith4Rentals() {
-    Movie movie = mock(Movie.class);
-    Rental rental = mock(Rental.class);
-    when(rental.getMovie(anyBoolean())).thenReturn(movie);
+  public void recentRentals2Rentals() {
+    assertEquals(
+      "Recent rentals:\n" +
+      "null\n" +
+      "null",
+      a.customer
+        .w(mock(Rental.class), mock(Rental.class))
+        .build()
+        .recentRentals()
+    );
+  }
 
+  @Test
+  public void recentRentals3Rentals() {
     assertEquals(
       "Recent rentals:\n" +
       "null\n" +
       "null\n" +
       "null",
-      a.customer.w(rental, rental, rental, rental).build()
+      a.customer
+        .w(
+          mock(Rental.class),
+          mock(Rental.class),
+          mock(Rental.class)
+        )
+        .build()
         .recentRentals()
     );
+  }
 
+  @Test
+  public void recentRentals4Rentals() {
+    assertEquals(
+      "Recent rentals:\n" +
+      "null\n" +
+      "null\n" +
+      "null",
+      a.customer
+        .w(
+          mock(Rental.class),
+          mock(Rental.class),
+          mock(Rental.class),
+          mock(Rental.class)
+        )
+        .build()
+        .recentRentals()
+    );
   }
 }
