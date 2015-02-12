@@ -42,4 +42,23 @@ public class CustomerTest {
     );
   }
 
+  @Test
+  public void recentRentalsWith4OrderdRentals() {
+    assertEquals(
+      "Recent rentals:\n" +
+      "Godfather 4\n" +
+      "Lion King\n" +
+      "Scarface",
+      a.customer
+        .w(
+          a.rental.w(a.movie.w("Godfather 4")),
+          a.rental.w(a.movie.w("Lion King")),
+          a.rental.w(a.movie.w("Scarface")),
+          a.rental.w(a.movie.w("Notebook"))
+        )
+        .build()
+        .recentRentals()
+    );
+  }
+
 }
