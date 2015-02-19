@@ -9,10 +9,10 @@ dependencies {
 }
 
 sourceSets {
-  main.java {
-    srcDir 'src'
-  }
-  test.java {
-    srcDir 'test'
-  }
+  main.java.srcDir 'src'
+  test.java.srcDir 'test'
+}
+
+test {
+  testLogging.exceptionFormat 'full'
 }
