@@ -2,6 +2,7 @@ package wewut.test.solitary;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import wewut.test.a;
 
@@ -173,9 +174,34 @@ public class MovieTest {
   }
 
   @Test
-  (expected=IllegalArgumentException.class)
   public void invalidTitle() {
-    a.movie.w(Movie.Type.UNKNOWN).build();
+    Runnable runnable = new Runnable() {
+      public void run() {
+        a.movie.w(Movie.Type.UNKNOWN).build();
+      }
+    };
+
+    assertThrows(
+      IllegalArgumentException.class,
+      runnable
+    );
+  }
+
+  public void assertThrows(Class ex, Runnable runnable) {
+    Exception exThrown = null;
+    try {
+      runnable.run();
+    }
+    catch (Exception exThrownActual) {
+      exThrown = exThrownActual;
+    }
+
+    if (null == exThrown) {
+      fail("No exception thrown");
+    }
+    else {
+      assertEquals(ex, exThrown.getClass());
+    }
   }
 
 }
