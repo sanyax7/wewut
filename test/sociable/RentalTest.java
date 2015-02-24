@@ -48,4 +48,15 @@ public class RentalTest {
     assertEquals(1, store.getAvailability(movie));
   }
 
+  @Test
+  public void storeAvailabilityIsUnmodified() {
+    Movie movie = a.movie.build();
+    Rental rental = a.rental.w(movie).build();
+    Store store = a.store.build();
+
+    rental.start(store);
+
+    assertEquals(0, store.getAvailability(movie));
+  }
+
 }
