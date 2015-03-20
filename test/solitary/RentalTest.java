@@ -1,12 +1,16 @@
 package wewut.test.solitary;
 
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.any;
+
+import org.joda.time.DateTimeUtils;
+import org.joda.time.DateTime;
 
 import wewut.test.a;
 
@@ -15,6 +19,19 @@ import wewut.Movie;
 import wewut.Rental;
 
 public class RentalTest {
+  @Test
+  public void creationDateTimeNow() {
+    DateTimeUtils.setCurrentMillisFixed(1000);
+    Rental rental = a.rental.build();
+    assertEquals(1000, rental.getCreationDateTime().getMillis());
+  }
+
+  @Test
+  public void creationDateTimeSet() {
+    Rental rental = a.rental.w(new DateTime(199)).build();
+    assertEquals(199, rental.getCreationDateTime().getMillis());
+  }
+
   @Test
   public void rentalIsStartedIfInStore() {
     Rental rental = a.rental.build();

@@ -3,6 +3,9 @@ package wewut.test;
 import java.util.Map;
 import java.util.HashMap;
 
+import org.joda.time.DateTimeUtils;
+import org.joda.time.DateTime;
+
 import wewut.*;
 
 public class a {
@@ -56,26 +59,32 @@ public class a {
   public static class RentalBuilder {
     final Movie movie;
     final int days;
+    final DateTime creationDateTime;
 
     RentalBuilder() {
-      this(new MovieBuilder().build(), 3);
+      this(new MovieBuilder().build(), 3, new DateTime(/*HACK*/1000/*HACK*/));
     }
 
-    RentalBuilder(Movie movie, int days) {
+    RentalBuilder(Movie movie, int days, DateTime creationDateTime) {
       this.movie = movie;
       this.days = days;
+      this.creationDateTime = creationDateTime;
     }
 
     public RentalBuilder w(MovieBuilder movie) {
-      return new RentalBuilder(movie.build(), days);
+      return new RentalBuilder(movie.build(), days, creationDateTime);
     }
 
     public RentalBuilder w(Movie movie) {
-      return new RentalBuilder(movie, days);
+      return new RentalBuilder(movie, days, creationDateTime);
+    }
+
+    public RentalBuilder w(DateTime creationDateTime) {
+      return new RentalBuilder(movie, days, creationDateTime);
     }
 
     public Rental build() {
-      return new Rental(movie, days);
+      return new Rental(movie, days, creationDateTime);
     }
   }
 

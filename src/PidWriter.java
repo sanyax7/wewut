@@ -8,7 +8,17 @@ import wewut.FileWriterGateway;
 public class PidWriter {
   public static void writePid(String filename, RuntimeMXBean bean) {
     try {
-      writePidtoFile(filename, bean);
+      FileWriterGateway writer = new FileWriterGateway(filename);
+      writePid(writer, bean);
+    }
+    catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public static void writePid(FileWriterGateway facade, RuntimeMXBean bean) {
+    try {
+      writePidtoFile(facade, bean);
     }
     catch (IOException e) {
       throw new RuntimeException(e);
@@ -16,15 +26,17 @@ public class PidWriter {
   }
 
   private
-  static void writePidtoFile(String filename, RuntimeMXBean bean)
+  static void writePidtoFile(FileWriterGateway facade, RuntimeMXBean bean)
   throws IOException {
-    FileWriterGateway writer = new FileWriterGateway(filename);
     try {
       String runtimeName = bean.getName();
-      writer.write(runtimeName.substring(0, runtimeName.indexOf('@')));
+      facade.write(runtimeName.substring(0, runtimeName.indexOf('@')));
+    }
+    catch (IOException e) {
+      throw new RuntimeException(e);
     }
     finally {
-      writer.close();
+      facade.close();
     }
   }
 }

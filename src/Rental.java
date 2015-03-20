@@ -1,13 +1,21 @@
 package wewut;
 
+import org.joda.time.DateTime;
+
 public class Rental {
   Movie movie;
   private int daysRented;
   private boolean started;
+  private DateTime creationDateTime;
 
-  public Rental(Movie movie, int daysRented) {
+  public Rental(Movie movie, int daysRented, DateTime creationDateTime) {
     this.movie = movie;
     this.daysRented = daysRented;
+    this.creationDateTime = creationDateTime;
+  }
+
+  public Rental(Movie movie, int daysRented) {
+    this(movie, daysRented, new DateTime());
   }
 
   public Movie getMovie() {
@@ -25,6 +33,10 @@ public class Rental {
 
   public int getDaysRented() {
     return daysRented;
+  }
+
+  public DateTime getCreationDateTime() {
+    return creationDateTime;
   }
 
   public double getCharge() {
