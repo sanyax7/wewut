@@ -18,10 +18,9 @@ import wewut.Store;
 import wewut.Movie;
 import wewut.Rental;
 
-public class RentalTest {
+public class RentalTest extends Solitary {
   @Test
   public void creationDateTimeNow() {
-    DateTimeUtils.setCurrentMillisFixed(1000);
     Rental rental = a.rental.build();
     assertEquals(1000, rental.getCreationDateTime().getMillis());
   }
