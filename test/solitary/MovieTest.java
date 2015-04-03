@@ -4,6 +4,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import static wewut.test.Assert.assertThrows;
+
 import wewut.test.a;
 
 import wewut.Movie;
@@ -174,34 +176,10 @@ public class MovieTest {
   }
 
   @Test
-  public void invalidTitle() {
-    Runnable runnable = new Runnable() {
-      public void run() {
-        a.movie.w(Movie.Type.UNKNOWN).build();
-      }
-    };
-
+  public void invalidTitleCustomAssertion() {
     assertThrows(
       IllegalArgumentException.class,
-      runnable
+      () -> a.movie.w(Movie.Type.UNKNOWN).build()
     );
   }
-
-  public void assertThrows(Class ex, Runnable runnable) {
-    Exception exThrown = null;
-    try {
-      runnable.run();
-    }
-    catch (Exception exThrownActual) {
-      exThrown = exThrownActual;
-    }
-
-    if (null == exThrown) {
-      fail("No exception thrown");
-    }
-    else {
-      assertEquals(ex, exThrown.getClass());
-    }
-  }
-
 }
