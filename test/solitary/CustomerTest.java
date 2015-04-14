@@ -6,9 +6,12 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import static wewut.test.Assert.assertMoney;
+
 import wewut.test.a;
 
 import wewut.Rental;
+import wewut.Money;
 
 public class CustomerTest {
   @Test
@@ -97,10 +100,9 @@ public class CustomerTest {
 
   @Test
   public void noRentalsCharge() {
-    assertEquals(
+    assertMoney(
       .0,
-      a.customer.build().getTotalCharge(),
-      0
+      a.customer.build().getTotalCharge()
     );
   }
 
@@ -108,15 +110,16 @@ public class CustomerTest {
   public void twoRentalsCharge() {
     Rental rental = mock(Rental.class);
 
-    when(rental.getCharge()).thenReturn(2.);
+    when(rental.getCharge()).thenReturn(
+      a.money.w(2.0).build()
+    );
 
-    assertEquals(
+    assertMoney(
       4.,
       a.customer.w(
         rental,
         rental
-      ).build().getTotalCharge(),
-      0
+      ).build().getTotalCharge()
     );
   }
 
@@ -124,16 +127,17 @@ public class CustomerTest {
   public void threeRentalsCharge() {
     Rental rental = mock(Rental.class);
 
-    when(rental.getCharge()).thenReturn(2.);
+    when(rental.getCharge()).thenReturn(
+      a.money.w(2.0).build()
+    );
 
-    assertEquals(
+    assertMoney(
       6.,
       a.customer.w(
         rental,
         rental,
         rental
-      ).build().getTotalCharge(),
-      0
+      ).build().getTotalCharge()
     );
   }
 

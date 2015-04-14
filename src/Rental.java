@@ -39,7 +39,7 @@ public class Rental {
     return creationDateTime;
   }
 
-  public double getCharge() {
+  public Money getCharge() {
     return movie.getCharge(daysRented);
   }
 
@@ -48,7 +48,7 @@ public class Rental {
   }
 
   public String getLineItem() {
-    return movie.getTitle() + " " + getCharge();
+    return movie.getTitle() + " " + getCharge().toDouble();
   }
 
   public boolean isStarted() {

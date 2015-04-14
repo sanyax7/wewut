@@ -37,8 +37,8 @@ public class Movie {
     }
   }
 
-  public double getCharge(int daysRented) {
-    return price.getCharge(daysRented);
+  public Money getCharge(int daysRented) {
+    return new Money(price.getCharge(daysRented));
   }
 
   public int getPoints(int daysRented) {

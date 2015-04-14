@@ -13,6 +13,7 @@ public class a {
   public static RentalBuilder rental = new RentalBuilder();
   public static MovieBuilder movie = new MovieBuilder();
   public static StoreBuilder store = new StoreBuilder();
+  public static MoneyBuilder money = new MoneyBuilder();
 
   public static class CustomerBuilder {
     Rental[] rentals;
@@ -140,5 +141,26 @@ public class a {
     public Store build() {
       return new Store(movies);
     }
+  }
+
+  public static class MoneyBuilder {
+    final double val;
+
+    MoneyBuilder() {
+      this(0.0);
+    }
+
+    MoneyBuilder(double val) {
+      this.val = val;
+    }
+
+    public MoneyBuilder w(double val) {
+      return new MoneyBuilder(val);
+    }
+
+    public Money build() {
+      return new Money(val);
+    }
+
   }
 }

@@ -39,7 +39,7 @@ public class Customer {
       result += "\t" + rental.getLineItem() + "\n";
 
     result +=
-      "Amount owed is " + getTotalCharge() + "\n" +
+      "Amount owed is " + getTotalCharge().toDouble() + "\n" +
       "You earned " + getTotalPoints() + " frequent renter points";
 
     return result;
@@ -53,16 +53,16 @@ public class Customer {
       result += "<p>" + rental.getLineItem() + "</p>\n";
 
     result +=
-      "<p>Amount owed is <em>" + getTotalCharge() + "</em></p>\n" +
+      "<p>Amount owed is <em>" + getTotalCharge().toDouble() + "</em></p>\n" +
       "<p>You earned <em>" + getTotalPoints() + " frequent renter points</em></p>";
 
     return result;
   }
 
-  public double getTotalCharge() {
-    double total = 0;
+  public Money getTotalCharge() {
+    Money total = new Money(0.0);
     for (Rental rental : rentals)
-      total += rental.getCharge();
+      total = total.add(rental.getCharge());
     return total;
   }
 

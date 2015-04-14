@@ -6,6 +6,8 @@ import static org.junit.Assert.fail;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import wewut.Money;
+
 public class Assert {
   public static void assertThrows(Class ex, Runnable runnable) {
     Exception exThrown = null;
@@ -26,5 +28,9 @@ public class Assert {
 
   public static void assertDateWithFormat(String expected, String format, Date dt) {
     assertEquals(expected, new SimpleDateFormat(format).format(dt));
+  }
+
+  public static void assertMoney(double d, Money m) {
+    assertEquals(d, m.toDouble(), 0);
   }
 }

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import static wewut.test.Assert.assertThrows;
+import static wewut.test.Assert.assertMoney;
 
 import wewut.test.a;
 
@@ -13,109 +14,97 @@ import wewut.Movie;
 public class MovieTest {
   @Test
   public void getChargeForChildrens1Day() {
-    assertEquals(
+    assertMoney(
       1.5,
-      a.movie.w(Movie.Type.CHILDREN).build().getCharge(1),
-      0
+      a.movie.w(Movie.Type.CHILDREN).build().getCharge(1)
     );
   }
 
   @Test
   public void getChargeForChildrens2Day() {
-    assertEquals(
+    assertMoney(
       1.5,
-      a.movie.w(Movie.Type.CHILDREN).build().getCharge(2),
-      0
+      a.movie.w(Movie.Type.CHILDREN).build().getCharge(2)
     );
   }
 
   @Test
   public void getChargeForChildrens3Day() {
-    assertEquals(
+    assertMoney(
       1.5,
-      a.movie.w(Movie.Type.CHILDREN).build().getCharge(3),
-      0
+      a.movie.w(Movie.Type.CHILDREN).build().getCharge(3)
     );
   }
 
   @Test
   public void getChargeForChildrens4Day() {
-    assertEquals(
+    assertMoney(
       3.,
-      a.movie.w(Movie.Type.CHILDREN).build().getCharge(4),
-      0
+      a.movie.w(Movie.Type.CHILDREN).build().getCharge(4)
     );
   }
 
   @Test
   public void getChargeForChildrens5Day() {
-    assertEquals(
+    assertMoney(
       4.5,
-      a.movie.w(Movie.Type.CHILDREN).build().getCharge(5),
-      0
+      a.movie.w(Movie.Type.CHILDREN).build().getCharge(5)
     );
   }
 
   @Test
   public void getChargeForNewRelease1Day() {
-    assertEquals(
+    assertMoney(
       3.,
-      a.movie.w(Movie.Type.NEW_RELEASE).build().getCharge(1),
-      0
+      a.movie.w(Movie.Type.NEW_RELEASE).build().getCharge(1)
     );
   }
 
   @Test
   public void getChargeForNewRelease2Day() {
-    assertEquals(
+    assertMoney(
       6.,
-      a.movie.w(Movie.Type.NEW_RELEASE).build().getCharge(2),
-      0
+      a.movie.w(Movie.Type.NEW_RELEASE).build().getCharge(2)
     );
   }
 
   @Test
   public void getChargeForNewRelease3Day() {
-    assertEquals(
+    assertMoney(
       9.,
-      a.movie.w(Movie.Type.NEW_RELEASE).build().getCharge(3),
-      0
+      a.movie.w(Movie.Type.NEW_RELEASE).build().getCharge(3)
     );
   }
 
   @Test
   public void getChargeForRegular1Day() {
-    assertEquals(
+    assertMoney(
       2.,
-      a.movie.w(Movie.Type.REGULAR).build().getCharge(1),
-      0
+      a.movie.w(Movie.Type.REGULAR).build().getCharge(1)
     );
   }
 
   @Test
   public void getChargeForRegular2Day() {
-    assertEquals(
+    assertMoney(
       2.,
-      a.movie.w(Movie.Type.REGULAR).build().getCharge(2),
-      0
+      a.movie.w(Movie.Type.REGULAR).build().getCharge(2)
     );
   }
 
   @Test
   public void getChargeForRegular3Day() {
-    assertEquals(
+    assertMoney(
       3.5,
-      a.movie.w(Movie.Type.REGULAR).build().getCharge(3),
-      0
+      a.movie.w(Movie.Type.REGULAR).build().getCharge(3)
     );
   }
 
   @Test
   public void getChargeForRegular4Day() {
-    assertEquals(
+    assertMoney(
       5.,
-      a.movie.w(Movie.Type.REGULAR).build().getCharge(4),
-      0
+      a.movie.w(Movie.Type.REGULAR).build().getCharge(4)
     );
   }
 

@@ -9,6 +9,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.any;
 
+import static wewut.test.Assert.assertMoney;
+
 import org.joda.time.DateTimeUtils;
 import org.joda.time.DateTime;
 
@@ -52,6 +54,17 @@ public class RentalTest extends Solitary {
     rental.start(store);
 
     assertFalse(rental.isStarted());
+  }
+
+  @Test
+  public void getChargeFromMovie() {
+    Movie movie = mock(Movie.class);
+
+    when(movie.getCharge(any(Integer.class))).thenReturn(
+      a.money.w(1.5).build()
+    );
+
+    assertMoney(1.5, a.rental.w(movie).build().getCharge());
   }
 
 }
