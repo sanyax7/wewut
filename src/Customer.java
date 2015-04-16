@@ -1,5 +1,6 @@
 package wewut;
 
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,11 @@ public class Customer {
 
   public void addRental(Rental rental) {
     rentals.add(rental);
+  }
+
+  public Customer addRentals(Rental ... newRentals) {
+    rentals.addAll(Arrays.asList(newRentals));
+    return this;
   }
 
   public String recentRentals() {

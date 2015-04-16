@@ -36,11 +36,7 @@ public class a {
       return new CustomerBuilder(name, rentals);
     }
 
-    public CustomerBuilder w(Rental ... instances) {
-      Rental[] rentals = new Rental[instances.length];
-      for (int i = 0; i < instances.length; i++) {
-        rentals[i] = instances[i];
-      }
+    public CustomerBuilder w(Rental ... rentals) {
       return new CustomerBuilder(name, rentals);
     }
 
@@ -147,7 +143,7 @@ public class a {
     final double val;
 
     MoneyBuilder() {
-      this(0.0);
+      this(1.0);
     }
 
     MoneyBuilder(double val) {
